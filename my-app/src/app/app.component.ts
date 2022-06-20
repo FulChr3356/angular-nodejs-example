@@ -16,13 +16,14 @@ export class AppComponent implements OnDestroy {
   title = 'angular-nodejs-example';
 
   userForm = new FormGroup({
-    firstName: new FormControl('', Validators.nullValidator && Validators.required),
-    lastName: new FormControl('', Validators.nullValidator && Validators.required),
-    email: new FormControl('', Validators.nullValidator && Validators.required)
+    date: new FormControl('', Validators.nullValidator && Validators.required),
+    description: new FormControl('', Validators.nullValidator && Validators.required),
+    amount: new FormControl('', Validators.nullValidator && Validators.required)
   });
 
   users: any[] = [];
   userCount = 0;
+  balance = 5000;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -31,7 +32,8 @@ export class AppComponent implements OnDestroy {
     this.appService.addUser(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
       console.log('message::::', data);
       this.userCount = this.userCount + 1;
-      console.log(this.userCount);
+      this.balance += this.userForm.value.amount;
+      console.log(this.balance);
       this.userForm.reset();
     });
   }

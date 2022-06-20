@@ -1,20 +1,22 @@
 <div class="container">
-  <h2>Users</h2>
+  <h2>Transcations</h2>
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>User Id</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <tr>ID</tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Amount</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users; let i = index">
+      <tr *ngFor="let transcation of users; let i = index">
         <td>{{i + 1}}</td>
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.email}}</td>
+        <td>{{transcation.date}}</td>
+        <td>{{transcation.description}}</td>
+        <td>{{transcation.status}}</td>
+        <td>{{transcation.amount}}</td>
       </tr>
     </tbody>
   </table>

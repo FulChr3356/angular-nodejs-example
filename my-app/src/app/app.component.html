@@ -2,22 +2,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-7 mrgnbtm">
-      <h2>Create User</h2>
+      <h2>Create Transcation</h2>
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="row">
           <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">First Name</label>
-            <input type="text" class="form-control" formControlName="firstName" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="First Name">
+            <label for="exampleInputEmail1">Date</label>
+            <input type="text" class="form-control" formControlName="date" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="date">
           </div>
           <div class="form-group col-md-6">
-            <label for="exampleInputPassword1">Last Name</label>
-            <input type="text" class="form-control" formControlName="lastName" id="exampleInputPassword1" placeholder="Last Name">
+            <label for="exampleInputPassword1">Descripton</label>
+            <input type="text" class="form-control" formControlName="description" id="exampleInputPassword1" placeholder="description">
           </div>
         </div>
         <div class="row">
           <div class="form-group col-md-12">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="text" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+            <label for="exampleInputEmail1">Amount</label>
+            <input type="text" class="form-control" formControlName="amount" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="amount">
           </div>
         </div>
         <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger">Create</button>
@@ -26,6 +26,7 @@
     <div class="col-md-4 mrgnbtm">
       <app-display-board
        [userCount]="userCount"
+       [Balance] = "balance"
        (getUsersEvent)="getAllUsers()"
       >
       </app-display-board>

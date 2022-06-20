@@ -1,27 +1,38 @@
+const { response } = require('express');
 const express = require('express');
 const app = express(),
       bodyParser = require("body-parser");
       port = 3080;
 
+const transactions = [];
 const users = [];
+let balance = 2000;
 
 app.use(bodyParser.json());
-app.use(express.static(process.cwd()+"/my-app/dist/angular-nodejs-example/"));
 
-app.get('/api/users', (req, res) => {
-  res.json(users);
+app.get('/api/transactions', (req, res) => {
+  res.json(transactions);
 });
 
-app.post('/api/user', (req, res) => {
-  const user = req.body.user;
-  users.push(user);
-  res.json("user addedd");
+
+app.post('/api/transaction', (req, res) => {
+  const transaction = req.body.transaction;
+  transactions.push(transaction);
+  balance -= transaction.amount;
+  res.json(`transaction addedd. New balance: ${balance}`);
 });
 
-app.get('/', (req,res) => {
-  res.sendFile(process.cwd()+"/my-app/dist/angular-nodejs-example/index.html")
+app.post('/api/payment', (req, res) => {
+  const payment = req.body.payment;
+  balance += payment;
+  res.json(`Payment posted New balance: ${balance}`);
 });
 
 app.listen(port, () => {
     console.log(`Server listening on the port::${port}`);
 });
+
+mongodb
+nested
+front anfular 
+ionicjs
